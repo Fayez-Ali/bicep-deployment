@@ -87,7 +87,6 @@ module monitor1 'modules/monitor.bicep' = {
   name: 'monitor1'
   params: {
     resourceName: 'storvnet1'
-    location: location
   }
 }
 
@@ -95,7 +94,6 @@ module monitor2 'modules/monitor.bicep' = {
   name: 'monitor2'
   params: {
     resourceName: 'storvnet2'
-    location: location
   }
 }
 

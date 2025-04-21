@@ -1,5 +1,4 @@
 param resourceName string
-param location string
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' existing = {
   name: resourceName
@@ -8,11 +7,10 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' existing 
 resource diagSettings 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: 'diagSettings'
   scope: storageAccount
-  location: location
   properties: {
     logs: [
       {
-        category: 'StorageRead'
+        category: 'StorageLogs'
         enabled: true
         retentionPolicy: {
           enabled: false
