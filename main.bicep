@@ -86,8 +86,7 @@ module storage2 'modules/storage.bicep' = {
 module monitor1 'modules/monitor.bicep' = {
   name: 'monitor1'
   params: {
-    resourceName: 'storvnet1'   // must match actual storage name
-    location: location
+    resourceName: 'storvnet1'
   }
 }
 
@@ -95,6 +94,6 @@ module monitor2 'modules/monitor.bicep' = {
   name: 'monitor2'
   params: {
     resourceName: 'storvnet2'
-    location: location
   }
 }
+
