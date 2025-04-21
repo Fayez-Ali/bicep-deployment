@@ -8,10 +8,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' existing 
 resource diagSettings 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: 'diagSettings'
   scope: storageAccount
+  location: location
   properties: {
     logs: [
       {
-        category: 'AuditLogs'
+        category: 'StorageRead'
         enabled: true
         retentionPolicy: {
           enabled: false
