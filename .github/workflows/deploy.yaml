@@ -1,0 +1,27 @@
+name: Deploy Bicep to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Bicep Template
+        run: |
+          az group create --name bicep-rg --location centralindia
+          az deployment group create \
+            --resource-group bicep-rg \
+            --template-file main.bicep \
+            --parameters adminPassword='Azure12345678!'
